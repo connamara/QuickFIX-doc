@@ -3,12 +3,19 @@ from rstcloth import rstcloth
 from . import produce_pages
 
 
-def make_restructured_text(spec_name, base_file, output_path, msgs, comps, fields):
+def make_restructured_text(spec_name, base_file, data_dict_xml_path, output_path, msgs, comps, fields):
     """Make restructuredtext documents for Sphinx consumption"""
     data_per_file = dict()
     # Construct base document header
     d = rstcloth.RstCloth()
     d.title(spec_name + " | " + base_file)
+    d.newline()
+
+    # Copy data dictionary as-is into the output path
+    with open(data_dict_xml_path, mode='r') as data_dict_file:
+        data_per_file[os.path.join(output_path, base_file)] = data_dict_file.read()
+    d.h2("Data Dictionary Source")
+    d.content(rstcloth.RstCloth.role("download", base_file))
     d.newline()
 
     # Categorize all the messages

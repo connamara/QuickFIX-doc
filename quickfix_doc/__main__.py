@@ -40,7 +40,7 @@ def parse_data_dictionary(data_dict_xml_path, output_path):
         pass
     msgs = next(elem for elem in e if str(elem.tag).lower() == datadictionary.messages.MESSAGE_TAG + "s")
     parsed_msgs = datadictionary.messages.parse_messages(msgs, head, tail)
-    return restructuredtext.produce_base.make_restructured_text(spec_name, base_file, output_path, parsed_msgs, parsed_comps, parsed_flds)
+    return restructuredtext.produce_base.make_restructured_text(spec_name, base_file, data_dict_xml_path, output_path, parsed_msgs, parsed_comps, parsed_flds)
 
 
 def main(args=None):
