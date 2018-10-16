@@ -1,4 +1,5 @@
 import os
+from . import components
 ROOT_DOCUMENT_TAG = 'fix'
 
 
@@ -19,7 +20,12 @@ def parse_child_elem(child_elem):
     child_elem_dict['type'] = str(child_elem.tag)
     child_elem_dict['required'] = parse_bool_yn(str(child_elem.attrib['required']).strip())
     child_elem_name = str(child_elem.attrib['name']).strip()
-    return child_elem_name, child_elem_dict
+    if child_elem_dict['type'] == 'group':
+        group_elems_dict = components.parse_component(child_elem)
+        comp_elems_dict = [group_elems_dict, child_elem_dict['required']]
+        return child_elem_name, comp_elems_dict
+    else:
+        return child_elem_name, child_elem_dict
 
 
 def get_doc_title(root_xml_tag, root_xml_attrib, data_dict_xml_path):
