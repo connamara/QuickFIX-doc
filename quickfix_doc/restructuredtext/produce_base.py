@@ -20,7 +20,8 @@ def make_restructured_text(spec_name, base_file, data_dict_xml_path, output_path
 
     # Categorize all the messages
     msg_with_categories = dict()
-    for msg_name in msgs:
+    sorted_msg_names = sorted([msg for msg in msgs])
+    for msg_name in sorted_msg_names:
         # Categorize the message
         msgtype = msgs[msg_name]['category']
         if not msgtype in msg_with_categories:
@@ -31,7 +32,8 @@ def make_restructured_text(spec_name, base_file, data_dict_xml_path, output_path
         data_per_file[os.path.join(output_path, "Messages", msg_name + ".rst")] = msg_file_data
 
     # Generate table of contents
-    for msg_category in msg_with_categories:
+    sorted_categories = sorted([cat for cat in msg_with_categories])
+    for msg_category in sorted_categories:
         d.h2("Messages - "+msg_category.upper())
         msgs_content = ["Messages/" + str(key) for key in msg_with_categories[msg_category]]
         d.directive(name="toctree", content=msgs_content)

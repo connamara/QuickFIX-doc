@@ -15,7 +15,7 @@ def _produce_element_rows(element_name, element_data, fields, added_components):
             group_elem_data = element_data[0][group_elem_name]
             element_rows_group, comps_to_add = _produce_element_rows(group_elem_name, group_elem_data, fields, components_to_add)
             for element_row_group in element_rows_group:
-                element_row_group[0] = "=> "+element_row_group[0]
+                element_row_group[0] = "> "+element_row_group[0]
                 element_rows.append(element_row_group)
             for new_comp in comps_to_add:
                 if not new_comp in components_to_add:
@@ -64,7 +64,8 @@ def produce_message_page(message_name, message_content, fields, components):
     d.newline()
     t = table.TableData(num_columns=5)
     t.add_header(standard_header)
-    for element_name in message_content['elements']:
+    sorted_element_names = sorted([elem_name for elem_name in message_content['elements']])
+    for element_name in sorted_element_names:
         element_rows, new_comps_to_add = _produce_element_rows(element_name, message_content['elements'][element_name], fields, components_to_add)
         for new_comp in new_comps_to_add:
             if not new_comp in components_to_add:
@@ -79,7 +80,7 @@ def produce_message_page(message_name, message_content, fields, components):
     if len(components_to_add) > 0:
         d.h2("Components")
         d.newline()
-        processing_components = [comp for comp in components_to_add]
+        processing_components = sorted([comp for comp in components_to_add])
         processing_components.reverse()
         while len(processing_components) > 0:
             component = processing_components.pop()
