@@ -1,6 +1,6 @@
 # QuickFIX-doc
 #### Author: Michael L. Wilner
-#### © 2018 Connamara Systems
+#### Copyright 2018 Connamara Systems
 Automatic documentation generation for QuickFIX XML Data Dictionaries
 
 ## Running
