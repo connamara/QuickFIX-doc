@@ -27,7 +27,8 @@ def _produce_element_rows(element_name, element_data, fields, added_components):
             description = str(field['type'])
             if 'values' in field:
                 values = field['values']
-                for val in values:
+                sorted_values = sorted([value for value in values])
+                for val in sorted_values:
                     val_representation = str(val).strip() + " = " + str(values[val])
                     element_rows.append([tag, element_name, required, description, val_representation])
                     tag = ""
