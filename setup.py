@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='QuickFIX-doc',
-    version='0.4',
+    version='0.5',
     description='QuickFIX data dictionary XML spec documentation generator',
     author='Michael L. Wilner',
     author_email='mwilner@connamara.com',
