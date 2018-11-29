@@ -11,7 +11,8 @@ def _produce_element_rows(element_name, element_data, fields, added_components):
     required = "*" if reqd else ""
     if is_group:
         element_rows.append(["", "*"+element_name+"*", required, "", ""])
-        for group_elem_name in element_data[0]:
+        sorted_group_elem_names = sorted([name for name in element_data[0]])
+        for group_elem_name in sorted_group_elem_names:
             group_elem_data = element_data[0][group_elem_name]
             element_rows_group, comps_to_add = _produce_element_rows(group_elem_name, group_elem_data, fields, components_to_add)
             for element_row_group in element_rows_group:
@@ -27,7 +28,8 @@ def _produce_element_rows(element_name, element_data, fields, added_components):
             description = str(field['type'])
             if 'values' in field:
                 values = field['values']
-                for val in values:
+                sorted_values = sorted([value for value in values])
+                for val in sorted_values:
                     val_representation = str(val).strip() + " = " + str(values[val])
                     element_rows.append([tag, element_name, required, description, val_representation])
                     tag = ""
