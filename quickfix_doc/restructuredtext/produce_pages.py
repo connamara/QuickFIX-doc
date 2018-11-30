@@ -66,6 +66,7 @@ def produce_message_page(message_name, message_content, fields, components):
     d.newline()
     t = table.TableData(num_columns=5)
     t.add_header(standard_header)
+    table_empty = True
     sorted_element_names = sorted([elem_name for elem_name in message_content['elements']])
     for element_name in sorted_element_names:
         element_rows, new_comps_to_add = _produce_element_rows(element_name, message_content['elements'][element_name], fields, components_to_add)
@@ -73,7 +74,10 @@ def produce_message_page(message_name, message_content, fields, components):
             if not new_comp in components_to_add:
                 components_to_add.append(new_comp)
         for element_row in element_rows:
+            table_empty = False
             t.add_row(element_row)
+    if table_empty:
+        t.add_row(["*empty*" for _ in standard_header])
     for table_line in table.ListTable(t).output:
         d.content(table_line, wrap=False)
     d.newline()
