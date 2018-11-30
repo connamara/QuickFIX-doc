@@ -23,10 +23,10 @@ def parse_data_dictionary(data_dict_xml_path, output_path):
     # Now get the components ready
     comps = None
     try:
-        comps = next(elem for elem in e if str(elem.tag).lower() == datadictionary.components.COMPONENT_TAG + "s")
+        comps = next(elem for elem in e if str(elem.tag).lower() == datadictionary.util.COMPONENT_TAG + "s")
     except:
         pass
-    parsed_comps = datadictionary.components.parse_components(comps) if comps is not None else dict()
+    parsed_comps = datadictionary.util.parse_components(comps) if comps is not None else dict()
     #Finally, go parse messages
     head = None
     try:
