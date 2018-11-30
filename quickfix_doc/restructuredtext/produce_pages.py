@@ -86,21 +86,29 @@ def produce_message_page(message_name, message_content, fields, components):
     if len(components_to_add) > 0:
         d.h2("Components")
         d.newline()
-        processing_components = sorted([comp for comp in components_to_add])
-        processing_components.reverse()
+        processing_components = [comp for comp in components_to_add]
+        processed_component_rows = dict()
         while len(processing_components) > 0:
             component = processing_components.pop()
-            d.h4(component)
-            d.newline()
-            t2 = table.TableData(num_columns=5)
-            t2.add_header(standard_header)
+            if not component in processed_component_rows:
+                processed_component_rows[component] = dict()
             for comp_elem in components[component]:
                 component_data = components[component][comp_elem]
                 element_rows, new_comps_to_add = _produce_element_rows(comp_elem, component_data, fields, components_to_add)
+                processed_component_rows[component][comp_elem] = element_rows
                 for new_comp in new_comps_to_add:
                     if not new_comp in components_to_add:
                         components_to_add.append(new_comp)
                         processing_components.append(new_comp)
+        sorted_component_names = sorted([name for name in processed_component_rows])
+        for component in sorted_component_names:
+            d.h4(component)
+            d.newline()
+            t2 = table.TableData(num_columns=5)
+            t2.add_header(standard_header)
+            sorted_component_elems = sorted([elem for elem in processed_component_rows[component]])
+            for comp_elem in sorted_component_elems:
+                element_rows = processed_component_rows[component][comp_elem]
                 for element_row in element_rows:
                     t2.add_row(element_row)
             for table_line in table.ListTable(t2).output:
