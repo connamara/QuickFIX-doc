@@ -1,4 +1,6 @@
 # QuickFIX-doc
+[![Build Status](https://travis-ci.org/connamara/QuickFIX-doc.svg?branch=master)](https://travis-ci.org/connamara/QuickFIX-doc)
+
 QuickFIX-doc parses QuickFIX data dictionary .xml files into descriptive [reStructuredText](http://docutils.sourceforge.net/rst.html) files using [RstCloth](https://pypi.org/project/rstcloth/), and then runs them through the [Sphinx](http://www.sphinx-doc.org/) documentation generation library for Python.
 
 ## Usage

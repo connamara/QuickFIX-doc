@@ -1,0 +1,22 @@
+language: minimal
+
+services:
+  - docker
+
+env:
+  matrix:
+    - FIXSPECNAME=FIX40
+    - FIXSPECNAME=FIX41
+    - FIXSPECNAME=FIX42
+    - FIXSPECNAME=FIX43
+    - FIXSPECNAME=FIX44
+    - FIXSPECNAME=FIX50
+    - FIXSPECNAME=FIX50SP1
+    - FIXSPECNAME=FIX50SP2
+    - FIXSPECNAME=FIXT11
+
+install:
+  - docker build -t quickfixdoc-acceptance .
+
+script:
+  - docker run -t --rm -e FIXSPECNAME=$FIXSPECNAME quickfixdoc-acceptance
