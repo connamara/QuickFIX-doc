@@ -11,6 +11,7 @@ ${specvar}       FIXSPECNAME
 Generate FIX Specs and Compare Outputs
     [Setup]    Environment Variable Should Be Set    ${specvar}
     ${specname} =    Get Environment Variable    ${specvar}
+    Log to Console    ${specname}
     @{files} =    List Directory    /opt/python/
     ${lastoutdir} =    Set Variable    ${EMPTY}
     :FOR    ${pyinst}    IN    @{files}
