@@ -1,9 +1,7 @@
 # QuickFIX-doc
-#### Author: Michael L. Wilner
-#### Copyright 2018 Connamara Systems
-Automatic documentation generation for QuickFIX XML Data Dictionaries
+QuickFIX-doc parses QuickFIX data dictionary .xml files into descriptive [reStructuredText](http://docutils.sourceforge.net/rst.html) files using [RstCloth](https://pypi.org/project/rstcloth/), and then runs them through the [Sphinx](http://www.sphinx-doc.org/) documentation generation library for Python.
 
-## Running
+## Usage
 ```
 quickfixdoc PATH/TO/DD.xml PATH/TO/OUTPUT/DIRECTORY [BUILDER (default: html)]
 ```
@@ -36,14 +34,41 @@ build succeeded.
 The HTML pages are in FIX_44_Spec/html.
 ```
 
+## Install
+1) Ensure Python is installed on your machine - [see here](https://wiki.python.org/moin/BeginnersGuide/Download)
+2) Clone this repository to a local folder
+3) `cd` into the folder and run `pip install .`
+
+## Tests
+1) Ensure [Docker](https://www.docker.com/get-started) is installed on your machine
+2) Execute `./acceptance.sh`
+3) Detailed reports will be available for each vanilla FIX spec under `./acceptance/FIX*`
+    * Each subdirectory includes [Robot Framework](http://robotframework.org/) report files
+    * `log.html`, `report.html`, and `output.xml`
+
 ## Background and Goals
 Writing specs for FIX **sucks**. QuickFIX-doc helps you "save time and look good" by taking care of the specification generation for you.
 
 All you need is a valid QuickFIX data dictionary. No need for any custom word documents, no chance for human error, just run and view your nice beautiful spec.
 
-QuickFIX-doc parses the QuickFIX data dictionary .xml files into descriptive [reStructuredText](http://docutils.sourceforge.net/rst.html) files using [RstCloth](https://pypi.org/project/rstcloth/), and then runs them through the [Sphinx](http://www.sphinx-doc.org/) documentation generation library for Python.
+## Contributing
+Please see the [contribution guidelines](CONTRIBUTION_GUIDELINES.md)
 
-## Installing
-1) Ensure Python is installed on your machine - [see here](https://wiki.python.org/moin/BeginnersGuide/Download)
-2) Clone this repository to a local folder
-3) `cd` into the folder and run `pip install .`
+## Credits
+Contributers:
+
+* [Mike Wilner](https://github.com/michaelwilner)
+* [Chris Busbey](https://github.com/cbusbey)
+
+![Connamara Systems](http://www.connamara.com/wp-content/uploads/2016/01/connamara_logo_dark.png)
+
+QuickFIX-doc is maintained and funded by [Connamara Systems, llc](http://connamara.com).
+
+The names and logos for Connamara Systems are trademarks of Connamara Systems, llc.
+
+## Licensing
+QuickFIX-doc is Copyright © 2018 Connamara Systems, llc.
+
+This software is available under the GPL and a commercial license.  Please see the [LICENSE](LICENSE) file for the terms specified by the GPL license.  The commercial license offers more flexible licensing terms compared to the GPL, and includes support services.  [Contact us](mailto:info@connamara.com) for more information on the Connamara commercial license, what it enables, and how you can start commercial development with it.
+
+This product includes software developed by quickfixengine.org ([http://www.quickfixengine.org/](http://www.quickfixengine.org/)). Please see the [QuickFIX Software LICENSE](QUICKFIX_LICENSE) for the terms specified by the QuickFIX Software License.
