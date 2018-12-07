@@ -11,7 +11,6 @@ setup(
     packages=['quickfix_doc','quickfix_doc.datadictionary','quickfix_doc.restructuredtext'],
     install_requires=['pyyaml','sphinx','rstcloth'],
     license='The QuickFIX License',
-    long_description=open('README.md').read(),
     include_package_data=True,
     entry_points = {
               'console_scripts': [
