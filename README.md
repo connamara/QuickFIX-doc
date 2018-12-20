@@ -38,8 +38,7 @@ The HTML pages are in FIX_44_Spec/html.
 
 ## Install
 1) Ensure Python is installed on your machine - [see here](https://wiki.python.org/moin/BeginnersGuide/Download)
-2) Clone this repository to a local folder
-3) `cd` into the folder and run `pip install .`
+2) Run `pip install https://github.com/connamara/QuickFIX-doc/archive/master.zip` in a shell
 
 ## Tests
 1) Ensure [Docker](https://www.docker.com/get-started) is installed on your machine
