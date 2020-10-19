@@ -8,7 +8,7 @@ def _produce_element_rows(element_name, element_data, fields, added_components):
     components_to_add = [comp for comp in added_components]
     is_group = not isinstance(element_data, dict)
     reqd = element_data['required'] if not is_group else element_data[1]
-    required = "*" if reqd else ""
+    required = "X" if reqd else ""
     if is_group:
         element_rows.append(["", "*"+element_name+"*", required, "", ""])
         sorted_group_elem_names = sorted([name for name in element_data[0]])

@@ -60,6 +60,7 @@ Contributers:
 
 * [Mike Wilner](https://github.com/michaelwilner)
 * [Chris Busbey](https://github.com/cbusbey)
+* [Mike Ackley](https://github.com/ackleymi)
 
 ![Connamara Systems](http://www.connamara.com/wp-content/uploads/2016/01/connamara_logo_dark.png)
 
@@ -68,7 +69,7 @@ QuickFIX-doc is maintained and funded by [Connamara Systems, llc](http://connama
 The names and logos for Connamara Systems are trademarks of Connamara Systems, llc.
 
 ## Licensing
-QuickFIX-doc is Copyright © 2018 Connamara Systems, llc.
+QuickFIX-doc is Copyright © 2020 Connamara Systems, llc.
 
 This software is available under the GPL and a commercial license.  Please see the [LICENSE](LICENSE) file for the terms specified by the GPL license.  The commercial license offers more flexible licensing terms compared to the GPL, and includes support services.  [Contact us](mailto:info@connamara.com) for more information on the Connamara commercial license, what it enables, and how you can start commercial development with it.
 
