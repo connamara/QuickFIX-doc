@@ -16,6 +16,7 @@ def parse_fields(flds):
         elem_dict = dict()
         elem_dict['type'] = str(elem.attrib['type']).upper()
         elem_dict['number'] = int(elem.attrib['number'])
+        elem_dict['description'] = elem.attrib['description'] if 'description' in elem.attrib else ''
         elem_values = dict()
         for elem_value in elem:
             elem_value_tag = str(elem_value.tag).strip()

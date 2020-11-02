@@ -25,19 +25,17 @@ def _produce_element_rows(element_name, element_data, fields, added_components):
         if element_data['type'] == 'field' and element_name in fields:
             field = fields[element_name]
             tag = rstcloth.RstCloth.inline_link(str(field['number']), "http://fixwiki.org/fixwiki/"+element_name)
-            description = str(field['type'])
+            typ = str(field['type'])
+            description = str(field['description'])
+            if 'values' in field and not description:
+                description = "Enums:"
+            element_rows.append([tag, element_name, required, typ, description])
             if 'values' in field:
                 values = field['values']
                 sorted_values = sorted([value for value in values])
                 for val in sorted_values:
                     val_representation = str(val).strip() + " = " + str(values[val])
-                    element_rows.append([tag, element_name, required, description, val_representation])
-                    tag = ""
-                    element_name = ""
-                    required = ""
-                    description = ""
-            else:
-                element_rows.append([tag, element_name, required, description, ""])
+                    element_rows.append(["", "", "", "", val_representation])
         elif element_data['type'] == 'component':
             if not element_name in components_to_add:
                 components_to_add.append(element_name)
@@ -60,7 +58,7 @@ def produce_message_page(message_name, message_content, fields, components):
     d.newline()
 
     #Message Fields
-    standard_header = ["Tag", "Field Name", "Req'd", "Data Type", "Acceptable Enums"]
+    standard_header = ["Tag", "Field Name", "Req'd", "Data Type", "Description"]
     components_to_add = list()
     d.h2("Fields")
     d.newline()
